@@ -1,0 +1,13 @@
+/target/
+/bin/
+.classpath
+.project
+/.settings/
+/.externalToolBuilders/
+/catalina.base_IS_UNDEFINED/
+Thumbs.db
+/.idea/
+*.iml
+/logs/
+.factorypath
+.settings/

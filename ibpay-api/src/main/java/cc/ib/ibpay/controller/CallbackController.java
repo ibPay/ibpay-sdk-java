@@ -42,7 +42,9 @@ public class CallbackController {
         //TODO 业务处理
         if(notifyReqVO.getTradeType().equals("DEPOSIT")){
             logger.info("=====收到充币通知======");
-            logger.info("地址address:{} 收到充值 ,amount:{},币种名currency:{},txid:{}, 确认块高confirmHeight:{}",notifyReqVO.getToAddress(), notifyReqVO.getAmount(),notifyReqVO.getCurrency(),notifyReqVO.getTxid(),notifyReqVO.getConfirmHeight());
+            logger.info("地址address:{} 收到充值 ,amount:{},币种名currency:{},txid:{}, 确认块高confirmHeight:{}, IB支付系统交易号tradeId:{} ",notifyReqVO.getToAddress(), notifyReqVO.getAmount(),notifyReqVO.getCurrency(),notifyReqVO.getTxid(),notifyReqVO.getConfirmHeight(),notifyReqVO.getTradeId());
+
+            //TODO: 每笔充币和 IB支付系统交易号tradeId 一一对应, 需要保存好tradeId,避免一笔充币多次入账
 
         }
         else if(notifyReqVO.getTradeType().equals("WITHDRAW")){

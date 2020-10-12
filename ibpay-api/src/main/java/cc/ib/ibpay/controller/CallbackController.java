@@ -50,18 +50,24 @@ public class CallbackController {
             logger.info("提币唯一ID(提币时填入的唯一ID) :{} , 提币地址address:{} , amount:{}, 币种名currency:{}, txid:{}, 确认块高confirmHeight:{}",notifyReqVO.getBusinessId(), notifyReqVO.getToAddress(), notifyReqVO.getAmount(),notifyReqVO.getCurrency(),notifyReqVO.getTxid(),notifyReqVO.getConfirmHeight());
 
 
-           /* if(trade.getStatus() == 1){
-                logger.info("审核通过，转账中");
-                //TODO: 提币交易已发出，理提币订单状态，扣除提币资金
+            if(notifyReqVO.getStatus().equals("0") ){
+                logger.info("等待提币");
+                //TODO: 提币交易已发出 ，扣除提币资金
             }
-            else if(trade.getStatus() == 2){
-                logger.info("审核不通过");
-                //TODO: 处理提币订单状态，订单号为 businessId
+            else if(notifyReqVO.getStatus().equals("1") ){
+                logger.info("提币中");
+                logger.info("提币唯一ID(提币时填入的唯一ID) :{} ",notifyReqVO.getBusinessId());
+
+                //TODO: 提币交易已广播 ,可以更改提币订单状态
             }
-            else if(trade.getStatus() == 3){
-                logger.info("提币已到账");
+            else if(notifyReqVO.getStatus().equals("2") ){
+                logger.info("提币完成");
+                logger.info("提币唯一ID(提币时填入的唯一ID) :{} ",notifyReqVO.getBusinessId());
+                logger.info("地址{} 已收到币",notifyReqVO.getToAddress());
                 //TODO: 提币已到账，可以向提币用户发出通知
-            }*/
+            }   else if(notifyReqVO.getStatus().equals("3") ){
+                logger.info("提币失败");
+            }
         }
         return "success";
     }

@@ -13,11 +13,10 @@ public class NotifyReqVO {
     private String confirmHeight;
     private String createTime;
     private String currency;
-    private String errorMsg;
-    private String fee;
-    private String feeCurrency;
+    private String msg;
     private String fromAddress;
     private String maxConfirmHeight;
+    private String status;
     private String toAddress;
     private String tradeId;
     private String tradeType;

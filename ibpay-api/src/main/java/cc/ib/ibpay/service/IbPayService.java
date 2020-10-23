@@ -8,6 +8,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -34,10 +35,11 @@ public class IbPayService {
      * @return
      */
     public Address createCoinAddress(String userId, String currency){
+
         try {
             String businessId= "";
-            if (userId==null||userId.isEmpty()){
-                businessId= getNonceString(32);
+            if (userId!=null&&!userId.equals("")){
+                businessId=userId;
             }
             ResponseMessage<Address> resp =  ibPayClient.createCoinAddress(businessId, currency);
             return  resp.getData();

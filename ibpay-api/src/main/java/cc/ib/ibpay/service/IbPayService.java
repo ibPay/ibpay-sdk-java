@@ -99,8 +99,8 @@ public class IbPayService {
 
         String userApiKey=ibPayClient.getMerchantKey();
 
-        //判断时间戳不能偏差太大
-        if (Math.abs(Long.parseLong(notifyReqVO.getTimestamp()) - System.currentTimeMillis() / 1000) > 240000) {
+        //判断时间戳不能偏差太大, 默认180秒
+        if (Math.abs(Long.parseLong(notifyReqVO.getTimestamp()) - System.currentTimeMillis() / 1000) > 180) {
             System.out.println("时间相差太大,验签不通过");
             return false;
         }
